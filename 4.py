@@ -1,7 +1,8 @@
-class Song:
-    label = "Universal Music Group"
+class Film:
+    label = "Universal Pictures"
     language = "English"
-    def __init__(self, name:str, author: str, genre: str, year: int, time: int) -> None:
+
+    def __init__(self, name: str, author: str, genre: str, year: int, time: int) -> None:
         self.name = name
         self.author = author
         self.genre = genre
@@ -9,10 +10,10 @@ class Song:
         self.time = time
 
     def __str__(self):
-        return f"'{self.name}' by {self.author}"
+        return f"'{self.name}' (реж. {self.author})"
 
     def get_time(self) -> bool:
-        return 6 > self.time > 2
+        return 360 > self.time > 120  # 6ч > время > 2ч
 
     def get_year(self, now_year: int) -> int:
         return now_year - self.year
@@ -21,13 +22,18 @@ class Song:
         self.name = n_name
 
     def change_label(self, label: str) -> None:
-        Song.label = label
+        Film.label = label
 
 
-song1 = Song("Enter The Sandman", "Metallica", "Heavy metal", 1991, 5)
-song2 = Song("Sonne", "Rammstein", "Industrial metal", 2001, 4)
+# Примеры использования (аналогично вашему исходному коду)
+film1 = Film("Первому игроку приготовиться", "Стивен Спилберг", "Фантастика", 2018, 140)
+film2 = Film("Гостья из будущего", "Павел Арсенов", "Фантастика", 1985, 137)
 
-print(song1.get_time())
-print(song2.author)
-song2.new_name("Mutter")
-song1.change_label("Vertigo")
+print(film1.get_time())
+print(film2.author)
+
+film2.new_name("Гостья из будущего")
+film1.change_label("Warner Bros.")
+
+print(film1)
+print(f"Студия: {Film.label}")
